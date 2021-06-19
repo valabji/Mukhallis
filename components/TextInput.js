@@ -6,7 +6,7 @@ import Colors from '../constants/Colors';
 export default function TextInput(props) {
     const {leftIcon} = props
     return (
-        <View style={{flexDirection:"row",flex:1}} >
+        <View style={{flexDirection:"row",width:"100%"}} >
             {leftIcon}
             <Ti
 

@@ -1,8 +1,8 @@
-import { Feather } from '@expo/vector-icons';
+import { Feather, Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState, useCallback } from 'react';
 import { StackActions } from '@react-navigation/native';
-
+import Colors from '../constants/Colors';
 import {
   Text,
   TextInput,
@@ -12,136 +12,173 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   KeyboardAvoidingView,
+  ScrollView,
 } from 'react-native';
+import styles, { SIZES } from '../constants/Style';
+import Ti from '../components/TextInput';
 
-const COLORS = {
-  WHITE: '#000',
+/* const Colors = {
+  BLACK: '#000',
   BLACK: '#FFF',
   BLUE: '#ddd',
   PURPLE: '#FFF',
-};
+}; */
 
-const SIZES = {
-  BASE: 6,
-  FONT: 12,
-  TITLE: 20,
-  PADDING: 12,
-};
-
-export default function Main({navigation}) {
+export default function Main({ navigation }) {
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = useCallback(async () => {
     setLoading(true);
-    navigation.dispatch(StackActions.replace('BotNav'))
+    if ("1234".match(password)) {
+      navigation.dispatch(StackActions.replace('BotNav'))
+    } else {
+      alert("Wrong password for user " + email)
+    }
     setLoading(false);
   });
 
   const renderInputs = () => {
     return (
       <View style={{ flex: 1 }}>
-        <View style={styles.inputContainer}>
+
+<View style={styles.inputContainer}>
+          <Ionicons name="person" size={18} color={Colors.DGray} />
           <TextInput
             value={email}
-            placeholder="Email"
+            placeholder="First name"
             style={styles.input}
-            selectionColor={COLORS.WHITE}
-            placeholderTextColor={COLORS.WHITE}
+            placeholderTextColor={Colors.BLACK}
             onChangeText={value => setEmail(value)}
           />
         </View>
+
         <View style={styles.inputContainer}>
+          <Ionicons name="person" size={18} color={Colors.DGray} />
+          <TextInput
+            value={email}
+            placeholder="Last name"
+            style={styles.input}
+            placeholderTextColor={Colors.BLACK}
+            onChangeText={value => setEmail(value)}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Ionicons name="mail" size={18} color={Colors.DGray} />
+          <TextInput
+            value={email}
+            placeholder="Email Address"
+            style={styles.input}
+            placeholderTextColor={Colors.BLACK}
+            onChangeText={value => setEmail(value)}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Ionicons name="phone-portrait" size={18} color={Colors.DGray} />
+          <TextInput
+            value={email}
+            placeholder="Mobile Number"
+            style={styles.input}
+            placeholderTextColor={Colors.BLACK}
+            onChangeText={value => setEmail(value)}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Ionicons name="lock-closed-outline" size={18} color={Colors.DGray} />
           <TextInput
             value={password}
             style={styles.input}
             placeholder="Password"
-            selectionColor={COLORS.WHITE}
-            placeholderTextColor={COLORS.WHITE}
+            placeholderTextColor={Colors.BLACK}
             secureTextEntry={!showPassword}
             onChangeText={value => setPassword(value)}
           />
           <TouchableOpacity
             style={{
-              right: 0,
-              top: SIZES.BASE,
+              right: 10,
+              // top: SIZES.BASE+7,
               position: 'absolute',
+              justifyContent: "center",
+              width: 18,
+              height: 30,
             }}
             onPress={() => setShowPassword(!showPassword)}>
             <Feather
-              color={COLORS.WHITE}
-              size={SIZES.FONT * 1.3}
+              color={Colors.BLACK}
+              size={18}
               name={!showPassword ? 'eye' : 'eye-off'}
             />
           </TouchableOpacity>
         </View>
-
+        <View style={styles.inputContainer}>
+          <Ionicons name="lock-closed-outline" size={18} color={Colors.DGray} />
+          <TextInput
+            value={password}
+            style={styles.input}
+            placeholder="Re-type Password"
+            placeholderTextColor={Colors.BLACK}
+            secureTextEntry={!showPassword}
+            onChangeText={value => setPassword(value)}
+          />
+          <TouchableOpacity
+            style={{
+              right: 10,
+              // top: SIZES.BASE+7,
+              position: 'absolute',
+              justifyContent: "center",
+              width: 18,
+              height: 30,
+            }}
+            onPress={() => setShowPassword(!showPassword)}>
+            <Feather
+              color={Colors.BLACK}
+              size={18}
+              name={!showPassword ? 'eye' : 'eye-off'}
+            />
+          </TouchableOpacity>
+        </View>
+        
         <TouchableOpacity activeOpacity={0.8} style={styles.signin} onPress={() => handleLogin()}>
           {loading ? (
-            <ActivityIndicator size={SIZES.FONT * 1.2} color={COLORS.PURPLE} />
+            <ActivityIndicator size={SIZES.FONT2} color={Colors.WHITE} />
           ) : (
-            <Text style={styles.signinLabel}>Register</Text>
+            <Text style={styles.signinLabel}>SIGN UP</Text>
           )}
+        </TouchableOpacity>
+
+<TouchableOpacity 
+        onPress={() => navigation.navigate("Login")}
+        style={{alignSelf:"center"}}
+        >
+          <Text
+            style={{
+              textAlign: 'right',
+              fontWeight: '300',
+              color: Colors.BLACK,
+              fontSize: SIZES.FONT2,
+              marginTop: SIZES.PADDING * 2,
+            }}>
+            Have an account ? <Text style={{fontWeight:"500"}}>LOGIN</Text>
+          </Text>
         </TouchableOpacity>
       </View>
     );
   };
 
   return (
-    <LinearGradient
-      style={{ flex: 1 }}
-      end={{ x: 1, y: 0.7 }}
-      start={{ x: 0, y: 0 }}
-      colors={[COLORS.BLUE, COLORS.PURPLE]}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <KeyboardAvoidingView style={styles.container}>
-          <View style={{ flex: 0.5, justifyContent: 'center' }}>
-            <Text style={styles.title}>Register</Text>
-          </View>
-          {renderInputs()}
-        </KeyboardAvoidingView>
-      </SafeAreaView>
-    </LinearGradient>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView style={styles.container}>
+        <View style={{ flex: 0.5, justifyContent: 'center',marginTop:40,marginBottom:40 }}>
+          <Text style={styles.title}>Create</Text>
+          <Text style={styles.title2}>A NEW ACCOUNT</Text>
+        </View>
+        {renderInputs()}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: SIZES.BASE * 4,
-  },
-  input: {
-    borderBottomColor: COLORS.WHITE,
-    borderColor: 'transparent',
-    borderWidth: StyleSheet.hairlineWidth,
-    color: COLORS.WHITE,
-    fontSize: SIZES.FONT,
-    paddingVertical: SIZES.PADDING * 0.5,
-  },
-  inputContainer: {
-    marginBottom: SIZES.PADDING * 2,
-  },
-  signin: {
-    backgroundColor: COLORS.WHITE,
-    borderRadius: SIZES.BASE * 5,
-    paddingVertical: SIZES.PADDING,
-    textAlign: 'center',
-    marginTop: 35,
-  },
-  signinLabel: {
-    color: COLORS.PURPLE,
-    fontSize: SIZES.FONT,
-    fontWeight: '600',
-    letterSpacing: 0.5,
-    textAlign: 'center',
-  },
-  title: {
-    color: COLORS.WHITE,
-    fontSize: SIZES.TITLE,
-    fontWeight: '600',
-    letterSpacing: 1,
-    marginBottom: SIZES.BASE,
-  },
-});

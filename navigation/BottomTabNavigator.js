@@ -5,8 +5,11 @@ import HomeScreen from '../screens/HomeScreen';
 import Screen2 from '../screens/Screen2';
 import Screen3 from '../screens/Screen3';
 import Colors from "../constants/Colors";
-import { Text, View } from 'react-native';
-import { AntDesign, Feather, FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
+import Account from "../BScreens/Account/Account"
+import Home from '../BScreens/Home/Home';
+import { Image, Text, View } from 'react-native';
+import { Discount, DiscountOff, ShopingCart, Ic_nounshoppingcart, Ic_categorybar, Ic_categorybaryellow, Ic_shopbar, Ic_shopbaryellow, Ic_cartbar, Ic_cartbaryellow, Ic_profilebaryellow, Ic_profilebar } from '../components/SVG';
+import { AntDesign, Entypo, Feather, FontAwesome5, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -17,8 +20,8 @@ export default function BottomTabNavigator({ navigation, route }) {
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}
       tabBarOptions={{
-        activeBackgroundColor: Colors.DGreen,
-        inactiveBackgroundColor: Colors.DGreen,
+        activeBackgroundColor: Colors.BGray,
+        inactiveBackgroundColor: Colors.BGray,
         tabStyle: {
           paddingTop: 10,
           // marginTop:10,
@@ -32,17 +35,23 @@ export default function BottomTabNavigator({ navigation, route }) {
     >
       <BottomTab.Screen
         name="Main"
-        component={HomeScreen}
+        // component={HomeScreen}
+        component={Home}
         options={{
           tabBarLabel: ({ focused }) => { return <View /> },
           tabBarIcon: ({ focused }) => {
             return <View style={{ width: 80, alignItems: "center" }}>
-              <AntDesign
-                name="sync"
+              {/* <Entypo
+                name="shop"
                 size={24}
-                color={focused ? Colors.DYellow : Colors.tabIconDefault}
-              />
-              <Text style={{ fontFamily: "Cairo_400Regular", color: focused ? Colors.DYellow : Colors.tabIconDefault }}>المحول</Text>
+                color={focused ? Colors.DYellow : Colors.DGray}
+              /> */}
+              {
+                focused ?
+                  <Ic_shopbaryellow /> :
+                  <Ic_shopbar />
+              }
+              <Text style={{ fontFamily: "Cairo_400Regular", color: focused ? Colors.DYellow : Colors.DGray }}>Home</Text>
             </View>
           },
         }}
@@ -54,12 +63,18 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarLabel: ({ focused }) => { return <View /> },
           tabBarIcon: ({ focused }) => {
             return <View style={{ width: 80, alignItems: "center" }}>
-              <AntDesign
-                name="bars"
+              {/*  <Feather
+                name="grid"
                 size={24}
-                color={focused ? Colors.DYellow : Colors.tabIconDefault}
-              />
-              <Text style={{ fontFamily: "Cairo_400Regular", color: focused ? Colors.DYellow : Colors.tabIconDefault }}>قائمة الاسعار</Text>
+                color={focused ? Colors.DYellow : Colors.DGray}
+              /> */}
+              {
+                focused ?
+                  <Ic_categorybaryellow />
+                  :
+                  <Ic_categorybar />
+              }
+              <Text style={{ fontFamily: "Cairo_400Regular", color: focused ? Colors.DYellow : Colors.DGray }}>Shops</Text>
             </View>
           },
         }}
@@ -71,12 +86,18 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarLabel: ({ focused }) => { return <View /> },
           tabBarIcon: ({ focused }) => {
             return <View style={{ width: 80, alignItems: "center" }}>
-              <MaterialCommunityIcons
+              {/* <MaterialCommunityIcons
                 name="gold"
                 size={24}
-                color={focused ? Colors.DYellow : Colors.tabIconDefault}
-              />
-              <Text style={{ fontFamily: "Cairo_400Regular", color: focused ? Colors.DYellow : Colors.tabIconDefault }}>الذهب</Text>
+                color={focused ? Colors.DYellow : Colors.DGray}
+              /> */}
+              {
+                focused ?
+                  <Discount />
+                  :
+                  <DiscountOff />
+              }
+              <Text style={{ fontFamily: "Cairo_400Regular", color: focused ? Colors.DYellow : Colors.DGray }}>Deals</Text>
             </View>
           },
         }}
@@ -88,31 +109,41 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarLabel: ({ focused }) => { return <View /> },
           tabBarIcon: ({ focused }) => {
             return <View style={{ width: 80, alignItems: "center" }}>
-              <MaterialCommunityIcons
+              {/* <MaterialCommunityIcons
                 name="bitcoin"
                 size={24}
                 style={{ paddingTop: 5, paddingBottom: 2 }}
-                color={focused ? Colors.DYellow : Colors.tabIconDefault}
-              />
-              <Text style={{ fontFamily: "Cairo_400Regular", color: focused ? Colors.DYellow : Colors.tabIconDefault }}>ع. رقمية</Text>
+                color={focused ? Colors.DYellow : Colors.DGray}
+              /> */}
+              {
+                focused ?
+                  <Ic_cartbaryellow /> :
+                  <Ic_cartbar />
+              }
+              <Text style={{ fontFamily: "Cairo_400Regular", color: focused ? Colors.DYellow : Colors.DGray }}>My Cart</Text>
             </View>
           },
         }}
       />
       <BottomTab.Screen
         name="Sc5"
-        component={Screen3}
+        component={Account}
         options={{
           tabBarLabel: ({ focused }) => { return <View /> },
           tabBarIcon: ({ focused }) => {
             return <View style={{ width: 80, alignItems: "center" }}>
-              <MaterialCommunityIcons
+              {/* <MaterialCommunityIcons
                 name="diamond"
                 size={24}
                 style={{ paddingTop: 5, paddingBottom: 2 }}
-                color={focused ? Colors.DYellow : Colors.tabIconDefault}
-              />
-              <Text style={{ fontFamily: "Cairo_400Regular", color: focused ? Colors.DYellow : Colors.tabIconDefault }}>المعادن</Text>
+                color={focused ? Colors.DYellow : Colors.DGray}
+              /> */}
+              {
+                focused ?
+                  <Ic_profilebaryellow /> :
+                  <Ic_profilebar />
+              }
+              <Text style={{ fontFamily: "Cairo_400Regular", color: focused ? Colors.DYellow : Colors.DGray }}>Me</Text>
             </View>
           },
         }}

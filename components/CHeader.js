@@ -1,40 +1,65 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Image, Text, View } from 'react-native';
+import { Feather, FontAwesome, FontAwesome5, Ionicons, AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import i18n from 'i18n-js';
+import Colors from '../constants/Colors';
 
-export default function CustomHeader({title, isHome, navigation}){
-    return(
-      <View style={{flexDirection:'row',height:64,backgroundColor:"#ddd"}}>
-        {
-          isHome?
-          <View style={{flex:1,justifyContent:'center'}}>
-              <TouchableOpacity
+export default function CustomHeader({ title, logo, isHome, navigation }) {
+  return (
+    <View style={{ flexDirection: 'row', height: 64, backgroundColor: Colors.WHITE }}>
+      {
+        isHome ?
+          <View style={{ flex: 1, justifyContent: 'center' }}>
+            <TouchableOpacity
               onPress={() => navigation.toggleDrawer()}
-              >
-                <Ionicons
-                    name="md-menu"
-                    size={30}
-                    style={{marginLeft:5}}
-                    color="#222"
-                />
+            >
+              <Feather
+                name="menu"
+                size={30}
+                style={{ marginLeft: 20 }}
+                color="#222"
+              />
             </TouchableOpacity>
           </View>
           :
-          <View style={{flex:1,justifyContent:'center'}}>
+          <View style={{ flex: 1, justifyContent: 'center' }}>
             <TouchableOpacity
-            onPress={() => navigation.goBack()}
-          >
-            <Text style={{width:30,height:30,marginLeft:5}}>(=</Text>
-              </TouchableOpacity>
+              onPress={() => navigation.goBack()}
+            >
+              <Feather
+                name="arrow-left"
+                size={30}
+                style={{ marginLeft: 5 }}
+                color="#222"
+              />
+            </TouchableOpacity>
           </View>
-        }
-        <View style={{flex:1.5,justifyContent:'center'}}>
-          <Text style={{textAlign:'center',fontWeight:"500",fontSize:18}}>{title}</Text>
-        </View>
-        <View style={{flex:1}}></View>
+      }
+      <View style={{ flex: 1.5, justifyContent: 'center', alignItems: "center" }}>
+        {/* <Text style={{ textAlign: 'center', fontFamily: "Cairo_400Regular", fontWeight: "500", fontSize: 18 }}>{title}</Text> */}
+        <Image
+          source={require("../assets/images/Logo.png")}
+          style={{
+            width:140,
+            height:50,
+            resizeMode:"contain",
+            // backgroundColor:"red",
+          }}
+        />
       </View>
-    )
-  }
-  
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: "flex-end" }}>
+        <TouchableOpacity
+        // onPress={() => navigation.toggleDrawer()}
+        >
+          <Ionicons
+            name="cart-outline"
+            size={32}
+            style={{ marginRight: 20 }}
+            color="#222"
+          />
+        </TouchableOpacity>
+      </View>
+    </View>
+  )
+}
