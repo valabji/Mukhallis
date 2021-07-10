@@ -2,6 +2,7 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
+import HomeScreen2 from '../screens/HomeScreen2';
 import Screen2 from '../screens/Screen2';
 import Screen3 from '../screens/Screen3';
 import Colors from "../constants/Colors";
@@ -35,8 +36,8 @@ export default function BottomTabNavigator({ navigation, route }) {
     >
       <BottomTab.Screen
         name="Main"
-        // component={HomeScreen}
-        component={Home}
+        component={HomeScreen}
+        // component={Home}
         options={{
           tabBarLabel: ({ focused }) => { return <View /> },
           tabBarIcon: ({ focused }) => {
@@ -58,7 +59,8 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
       <BottomTab.Screen
         name="Sc2"
-        component={Screen2}
+        component={HomeScreen2}
+        // component={Screen2}
         options={{
           tabBarLabel: ({ focused }) => { return <View /> },
           tabBarIcon: ({ focused }) => {

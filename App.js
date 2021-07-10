@@ -174,8 +174,8 @@ export default function App(props) {
           <Stack.Navigator initialRouteName="BotNav">
             <Stack.Screen
               name="Login"
-              // component={LoginScreen}
-              component={TScreen}
+              component={LoginScreen}
+              // component={TScreen}
               options={{
                 title: 'Login',
                 headerShown: false,
@@ -205,9 +205,12 @@ function DNav() {
   return (
     <Drawer.Navigator
       drawerType="slide"
-      drawerPosition="right"
+      drawerPosition="left"
+      overlayColor="#fff0"
       drawerContent={({ navigation }) => <View
-        style={{ width: "100%", height: "100%", backgroundColor: Colors.BGreen }}>
+      style={{ width: "100%", height: "100%", backgroundColor: Colors.WHITE }}>
+        <View
+        style={{ width: "100%",marginRight:30,marginTop:40,borderTopStartRadius:25, height: "100%", backgroundColor: Colors.DYellow }}>
         <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
           <Image
             source={require("./assets/images/icon.png")}
@@ -330,7 +333,6 @@ function DNav() {
           <View style={{ flex: 1 }} />
           <Feather name="share-2" size={24} color={Colors.BYellow} style={{ marginTop: 17, marginLeft: 20 }} />
         </TouchableOpacity>
-
         <TouchableOpacity
           onPress={() => {
             navigation.dispatch(StackActions.replace('Login'))
@@ -359,7 +361,9 @@ function DNav() {
           <View style={{ flex: 1 }} />
           <Feather name="share-2" size={24} color={Colors.BYellow} style={{ marginTop: 17, marginLeft: 20 }} />
         </TouchableOpacity>
-      </View>}
+      </View>
+      </View>
+      }
       initialRouteName="Home">
       <Drawer.Screen name="Home" component={BottomTabNavigator} />
       <Drawer.Screen name="Screen3" component={Screen3} />
