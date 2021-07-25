@@ -4,6 +4,7 @@ import { Feather, FontAwesome, FontAwesome5, Ionicons, AntDesign } from '@expo/v
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import i18n from 'i18n-js';
 import Colors from '../constants/Colors';
+import { Ic_nounshoppingcart, Ic_noun_menu_1812743 } from './SVG';
 
 export default function CustomHeader({ title, logo, isHome, navigation }) {
   return (
@@ -13,13 +14,9 @@ export default function CustomHeader({ title, logo, isHome, navigation }) {
           <View style={{ flex: 1, justifyContent: 'center' }}>
             <TouchableOpacity
               onPress={() => navigation.toggleDrawer()}
+              style={{paddingLeft:20,}}
             >
-              <Feather
-                name="menu"
-                size={30}
-                style={{ marginLeft: 20 }}
-                color="#222"
-              />
+              <Ic_noun_menu_1812743 />
             </TouchableOpacity>
           </View>
           :
@@ -39,11 +36,12 @@ export default function CustomHeader({ title, logo, isHome, navigation }) {
       <View style={{ flex: 1.5, justifyContent: 'center', alignItems: "center" }}>
         {/* <Text style={{ textAlign: 'center', fontFamily: "Cairo_400Regular", fontWeight: "500", fontSize: 18 }}>{title}</Text> */}
         <Image
-          source={require("../assets/images/Logo.png")}
+          // source={require("../assets/images/Logo.png")}
+          source={require("../assets/images/LogoType.png")}
           style={{
-            width:140,
-            height:50,
-            resizeMode:"contain",
+            width: 140,
+            height: 50,
+            resizeMode: "contain",
             // backgroundColor:"red",
           }}
         />
@@ -51,13 +49,9 @@ export default function CustomHeader({ title, logo, isHome, navigation }) {
       <View style={{ flex: 1, justifyContent: 'center', alignItems: "flex-end" }}>
         <TouchableOpacity
         // onPress={() => navigation.toggleDrawer()}
+        style={{paddingRight: 20}}
         >
-          <Ionicons
-            name="cart-outline"
-            size={32}
-            style={{ marginRight: 20 }}
-            color="#222"
-          />
+          <Ic_nounshoppingcart />
         </TouchableOpacity>
       </View>
     </View>

@@ -1,17 +1,17 @@
-import * as React from 'react';
+import * as React from "react";
 import { StackActions } from "@react-navigation/native";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import HomeScreen2 from '../screens/HomeScreen2';
-import Screen2 from '../screens/Screen2';
+import TabBarIcon from "../components/TabBarIcon";
+import HomeScreen from "../screens/HomeScreen";
+import HomeScreen2 from "../screens/HomeScreen2";
+import Screen2 from "../screens/Screen2";
 // import Shops from "../BScreens/Shops/Shops";
 // import Shop from "../BScreens/Shop/Shop";
 // import Item from "../BScreens/Item/Item";
-import Screen3 from '../screens/Screen3';
+import Screen3 from "../screens/Screen3";
 import Colors from "../constants/Colors";
 // import Account from "../BScreens/Account/Account";
 // import Home from "../BScreens/Home/Home";
@@ -100,7 +100,7 @@ import Lang from "../BScreens/Splash/Lang";
 // TScreen = Splash
 
 const BottomTab = createBottomTabNavigator();
-const INITIAL_ROUTE_NAME = 'Home';
+const INITIAL_ROUTE_NAME = "Home";
 
 export default function NestedNavigations() {
   const Stack = createStackNavigator();
@@ -311,7 +311,9 @@ export default function NestedNavigations() {
             component={HomeScreen}
             // component={Home}
             options={{
-              tabBarLabel: ({ focused }) => { return <View /> },
+              tabBarLabel: ({ focused }) => {
+                return <View />;
+              },
               tabBarIcon: ({ focused }) => {
                 return (
                   <View style={{ width: 80, alignItems: "center" }}>
@@ -339,7 +341,9 @@ export default function NestedNavigations() {
             component={HomeScreen2}
             // component={Screen2}
             options={{
-              tabBarLabel: ({ focused }) => { return <View /> },
+              tabBarLabel: ({ focused }) => {
+                return <View />;
+              },
               tabBarIcon: ({ focused }) => {
                 return (
                   <View style={{ width: 80, alignItems: "center" }}>
@@ -544,21 +548,35 @@ export default function NestedNavigations() {
                       pointerEvents="box-none"
                       style={{
                         // position: "absolute",
-                        marginLeft: 25,
+                        // marginLeft: 25,
                         // marginRight: 115,
-                        marginTop: 35,
+                        // marginTop: 35,
                         // height: 188,
                         alignItems: "flex-start",
                       }}
                     >
-                      <Text style={styles.brandShopText}>BRAND {"\n"}SHOP</Text>
+                      <View style={{ backgroundColor: "white",width:250,paddingTop: 15,paddingBottom:15,borderBottomRightRadius:15 }}>
+                        {/* <Text style={styles.brandShopText}>BRAND {"\n"}SHOP</Text> */}
+                        <Image
+                          // source={require("../assets/images/Logo.png")}
+                          source={require("../assets/images/LogoType.png")}
+                          style={{
+                            width: 250,
+                            height: 80,
+                            resizeMode: "contain",
+                            // backgroundColor:"red",
+                          }}
+                        />
+                      </View>
+
                       <View
                         pointerEvents="box-none"
                         style={{
                           alignSelf: "stretch",
                           height: 90,
-                          marginTop: 40,
+                          marginTop: 20,
                           marginBottom: 20,
+                          marginLeft: 25,
                           flexDirection: "row",
                           alignItems: "flex-start",
                         }}
@@ -722,10 +740,10 @@ export default function NestedNavigations() {
                     </View>
                   </View>
                 </View>
-                <Image
+                {/* <Image
                   source={require("./../assets/images/group-1701-3.png")}
                   style={styles.group1701Image}
-                />
+                /> */}
               </View>
             );
           }}

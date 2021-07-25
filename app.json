@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Mukhallis",
-    "slug": "Mukhallis",
+    "name": "Rekit",
+    "slug": "ReKit",
     "privacy": "public",
     "platforms": [
       "ios",
@@ -15,7 +15,7 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "width": 64,
+      "width":64,
       "backgroundColor": "#fff"
     },
     "updates": {
@@ -25,12 +25,11 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.valabji.mukhallis",
+      "bundleIdentifier": "com.valabji.rekit",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.valabji.mukhallis"
-    },
-    "description": ""
+      "package": "com.valabji.rekit"
+    }
   }
 }
